@@ -1,5 +1,27 @@
+@font-face {
+  font-family: Arcon-Regular;
+  src: url('../fonts/Arcon-Regular.otf')
+}
+@font-face {
+  font-family: SourcerSansPro;
+  src: url('../fonts/SourceSansPro-Semibold.otf')
+}
 .row {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.main h2 {
+  font-family: SourcerSansPro, sans-serif;
+  font-size: 3.2rem;
+}
+.main p {
+  font-size: 1.8rem;
+}
+.main a {
+  color: #b6b6b6;
+}
+.main a:hover {
+  transition-duration: 200ms;
+  color: #2196F3;
 }
