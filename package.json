@@ -1,0 +1,47 @@
+{
+  "name": "ci-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint gulpTasks/*.js app/**/**/*.js",
+    "prepush": "npm run lint",
+    "dev":"gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoLuizNunes/ci-front-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@uirouter/angularjs": "1.0.15",
+    "angular": "1.6.6",
+    "angular-toastr": "2.1.1",
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.0",
+    "bootstrap": "3.3.7",
+    "eslint": "4.18.1",
+    "eslint-config-google": "^0.9.1",
+    "font-awesome": "4.7.0",
+    "gulp": "3.9.1",
+    "gulp-babel": "7.0.0",
+    "gulp-concat": "2.6.1",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-uglify": "3.0.0",
+    "gulp-uglifycss": "1.0.8",
+    "gulp-util": "3.0.8",
+    "gulp-watch": "4.3.11",
+    "gulp-webserver": "0.9.1",
+    "husky": "0.15.0-rc.8",
+    "jquery": "3.3.1",
+    "nodemon": "1.15.1",
+    "run-sequence": "2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ThiagoLuizNunes/ci-front-end/issues"
+  },
+  "homepage": "https://github.com/ThiagoLuizNunes/ci-front-end#readme"
+}
