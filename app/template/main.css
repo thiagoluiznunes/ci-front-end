@@ -6,16 +6,23 @@
   font-family: SourcerSansPro;
   src: url('../fonts/SourceSansPro-Semibold.otf')
 }
+@font-face {
+  font-family: DroidSerif;
+  src: url('assets/fonts/DroidSerif-Regular.ttf')
+}
 .row {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.main {
+}
 .main h2 {
-  font-family: SourcerSansPro, sans-serif;
+  font-family: SourcerSansPro;
   font-size: 3.2rem;
 }
 .main p {
+  font-family: DroidSerif;
   font-size: 1.8rem;
 }
 .main a {
@@ -24,4 +31,10 @@
 .main a:hover {
   transition-duration: 200ms;
   color: #2196F3;
+}
+.main i {
+  color: #b6b6b6;
+}
+#h2-data {
+  color: #b6b6b6;
 }
