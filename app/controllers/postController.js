@@ -3,21 +3,31 @@
 (function() {
   angular
     .module('ci-app')
-    .controller('PostCtrl', PostController);
+    .controller('PostCtrl', PostController)
+    .run(background);
 
   PostController.$inject =
-    ['$http', 'consts'];
+    ['$http', 'methods', 'consts'];
 
-  function PostController($http, consts) {
+  function PostController($http, methods, consts) {
     const vm = this;
+    const url = `${consts.oapiUrl}/item`;
+    vm.posts = {};
 
-    vm.posts = [];
-    vm.post = {
-      type: 'My conversion day',
-      description: 'It was a night of Sunday when I gave my life to Jesus!',
-      name: 'Thiago Luiz',
-      contact: 'https://www.facebook.com/thiagoluizsurf',
-      data: '18/02/1993'
-    };
+    vm.get = () => {
+      $http.get(url)
+        .then((response) => {
+          console.log(response.data)
+          vm.posts = response.data;
+        })
+        .catch((response) => {
+          msgs.addError(response.data.errors);
+        });
+    }
+    vm.get();
+  }
+
+  function background() {
+
   }
 })();

@@ -9,7 +9,8 @@
       owner: 'Thiago Luiz',
       year: '2018',
       site: 'https://github.com/ThiagoLuizNunes',
-      oapiUrl: 'http://localhost:4000',
+      oapiUrl: 'https://ci-back-end.herokuapp.com/api',
+      // oapiUrl: 'http://localhost:4000/api',
       userKey: '_ci-achados-perdidos_'})
     .run(['$rootScope', 'consts', runConsts]);
 

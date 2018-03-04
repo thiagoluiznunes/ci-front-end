@@ -3,7 +3,7 @@
 (function() {
   angular
     .module('ci-app')
-    .component('ci-post', {
+    .component('ciPost', {
       bindings: {
         type: '@',
         description: '@',
