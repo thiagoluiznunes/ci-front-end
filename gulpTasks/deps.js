@@ -32,6 +32,7 @@ gulp.task('deps.css', () => {
 gulp.task('deps.fonts', () => {
   return gulp.src([
     'node_modules/font-awesome/fonts/*.*',
-    'node_modules/bootstrap/dist/fonts/*.*'])
+    'node_modules/bootstrap/dist/fonts/*.*',
+    'node_modules/%40fortawesome'])
   .pipe(gulp.dest('public/assets/fonts'));
 });

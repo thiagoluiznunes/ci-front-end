@@ -7,6 +7,10 @@
   src: url('../fonts/SourceSansPro-Semibold.otf')
 }
 @font-face {
+  font-family: SourcerSansProBold;
+  src: url('../fonts/SourceSansPro-Bold.otf')
+}
+@font-face {
   font-family: DroidSerif;
   src: url('assets/fonts/DroidSerif-Regular.ttf')
 }
@@ -18,7 +22,7 @@
 .main {
 }
 .main h2 {
-  font-family: SourcerSansPro;
+  font-family: SourcerSansProBold;
   font-size: 3.2rem;
 }
 .main p {
