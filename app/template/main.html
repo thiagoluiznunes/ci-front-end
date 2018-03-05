@@ -1,9 +1,13 @@
 <main ng-controller="PostCtrl as pCtrl" class="container">
   <div class="row">
-    <section class="col-xs-10 col-sm-6 col-lg-6 col-xl-6">
+    <a id="floatButton" ng-click="pCtrl.addPost()"  href="#" class="float">
+      <i class="fa fa-plus my-float"></i>
+    </a>
+    <section class="col-xs-12 col-sm-12 col-lg-12 col-xl-12">
       <ci-post ng-repeat="post in pCtrl.posts" type="{{ post.type }}" description="{{ post.description }}" name="{{ post.name }}"
         contact="{{ post.contact }}" data="{{ post.data }}">
       </ci-post>
     </section>
+    <!-- <div ng-include="'template/modal.html'"></div> -->
   </div>
 </main>

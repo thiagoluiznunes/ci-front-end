@@ -14,12 +14,13 @@
   font-family: DroidSerif;
   src: url('assets/fonts/DroidSerif-Regular.ttf')
 }
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .main {
+  border-top: 1px solid rgba(182,182,182,0.2);
+  max-width:600px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .main h2 {
   font-family: SourcerSansProBold;
@@ -40,5 +41,22 @@
   color: #b6b6b6;
 }
 #h2-data {
+  margin-top:5%;
   color: #b6b6b6;
+}
+.float{
+  z-index: 1;
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#2196F3;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+}
+.my-float{
+  margin-top:22px;
 }
