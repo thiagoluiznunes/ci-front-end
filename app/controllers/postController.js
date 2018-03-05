@@ -3,31 +3,34 @@
 (function() {
   angular
     .module('ci-app')
-    .controller('PostCtrl', PostController)
-    .run(background);
+    .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', 'methods', 'consts'];
+    ['$http', '$interval', 'consts'];
 
-  function PostController($http, methods, consts) {
+  function PostController($http, $interval, consts) {
     const vm = this;
     const url = `${consts.oapiUrl}/item`;
     vm.posts = {};
+    vm.floatButton = document.getElementById('floatButton');
+
+    vm.addPost = () => {
+      $('#myModal').modal('show');
+    };
 
     vm.get = () => {
       $http.get(url)
         .then((response) => {
-          console.log(response.data)
-          vm.posts = response.data;
+          vm.posts = response.data.reverse();
         })
         .catch((response) => {
           msgs.addError(response.data.errors);
         });
-    }
+    };
     vm.get();
-  }
 
-  function background() {
-
+    $interval(() => {
+      vm.get();
+    }, 50000);
   }
 })();
