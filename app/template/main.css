@@ -60,3 +60,19 @@
 .my-float{
   margin-top:22px;
 }
+.modal-header {
+  background-color: #2196F3;
+  color: #fff;
+}
+.modal-header h5 {
+  font-family: SourcerSansPro;
+  font-size: 2rem;
+}
+.modal-footer .btn-primary {
+  font-family: SourcerSansPro;
+  background-color:#2196F3;
+  border-color:#2196F3;
+}
+.modal-footer .btn-secondary {
+  font-family: SourcerSansPro;
+}
