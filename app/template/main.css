@@ -82,3 +82,6 @@
 .form-group label {
   color: rgba(182,182,182);
 }
+.checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {
+  margin-left: 0px;
+}
