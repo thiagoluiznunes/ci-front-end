@@ -65,7 +65,7 @@
   color: #fff;
 }
 .modal-header h5 {
-  font-family: SourcerSansPro;
+  font-family: Arcon-Regular;
   font-size: 2rem;
 }
 .modal-footer .btn-primary {
@@ -75,4 +75,10 @@
 }
 .modal-footer .btn-secondary {
   font-family: SourcerSansPro;
+}
+.form-group {
+
+}
+.form-group label {
+  color: rgba(182,182,182);
 }

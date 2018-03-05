@@ -4,25 +4,48 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="row">
-          <h5 class="col-xs-10 col-sm-10 col-lg-10 col-xl-10 modal-title" id="myModalLabel">Postar objeto</h5>
+          <div class="col-xs-10 col-sm-10 col-lg-10 col-xl-10 modal-title">
+            <i class=""></i>
+            <h5 id="myModalLabel">Você pode publicar um objeto.</h5>
+          </div>
           <button type="button" class="col-xs-1 col-sm-1 col-lg-1 col-xl-1 close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="found col-xs-6 col-sm-6 col-lg-6 col-xl-6">
-            <div style="font-size:3em; color:#00BFA5">
-              <i id="svg-found" class="fas fa-smile fa-3x"></i>
+        <form>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Nome</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ex: João">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Rede Social</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ex: facebook">
+          </div>
+          <div class="form-group row">
+            <div class="col-xs-8 col-sm-8 col-lg-8 col-xl-8">
+              <div class="form-group">
+                <label for="example-date-input" class="col-2 col-form-label">Data</label>
+                <div class="col-10">
+                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-4 col-xl-4">
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Achado
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" value="">Perdido
+              </label>
             </div>
           </div>
-          <div class="lost col-xs-6 col-sm-6 col-lg-6 col-xl-6">
-            <div style="font-size:3em; color:#FF6D00">
-              <i id="svg-lost" class="fas fa-frown fa-3x"></i>
-            </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descrição</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
-        </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
