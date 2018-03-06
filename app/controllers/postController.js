@@ -6,26 +6,33 @@
     .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', '$interval', 'consts'];
+    ['$http', '$interval', 'methods', 'consts'];
 
-  function PostController($http, $interval, consts) {
+  function PostController($http, $interval, methods, consts) {
     const vm = this;
-    const url = `${consts.oapiUrl}/item`;
+
     vm.posts = {};
     vm.floatButton = document.getElementById('floatButton');
+    vm.check_f = 'found';
+    vm.check_l = 'lost';
 
     vm.addPost = () => {
       $('#myModal').modal('show');
     };
 
+    vm.checkbox = (param) => {
+      console.log(param);
+      // if (param === 'found') {
+      //   console.log('oi');
+      // } else {
+      //   console.log('oi 2');
+      // }
+    };
+
     vm.get = () => {
-      $http.get(url)
-        .then((response) => {
-          vm.posts = response.data.reverse();
-        })
-        .catch((response) => {
-          msgs.addError(response.data.errors);
-        });
+      methods.get().then((response) => {
+        vm.posts = response.data.reverse();
+      });
     };
     vm.get();
 

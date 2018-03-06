@@ -9,17 +9,15 @@
     ['$http', 'consts'];
 
   function MethodsFactory($http, consts) {
-    let data = null;
-    function get(url) {
-      $http.get(`${consts.oapiUrl}/item`)
-        .then((response) => {
-          data = response.data;
-        })
-        .catch((response) => {
-        });
-        return data;
-    }
+    let methods = {};
+    const url = `${consts.oapiUrl}/item`;
 
-    return {get};
+    methods.get = () => {
+        return $http.get(url);
+    };
+    methods.post = () => {
+        return $http.post(url);
+    };
+    return methods;
   }
 })();

@@ -7,8 +7,15 @@
 
     function ModalController() {
       const vm = this;
+      const post = null;
 
-      vm.data = {};
-      vm.data.cb1 = true;
+      vm.checkbox = () => {
+          console.log('oi');
+        if (param == 'found') {
+          post.type = param;
+        } else {
+          post.type = param;
+        }
+      };
     }
 })();
