@@ -13,10 +13,10 @@
     const url = `${consts.oapiUrl}/item`;
 
     methods.get = () => {
-        return $http.get(url);
+      return $http.get(url);
     };
-    methods.post = () => {
-        return $http.post(url);
+    methods.post = (obj) => {
+      return $http.post(url, obj);
     };
     return methods;
   }
