@@ -15,10 +15,13 @@
     vm.found = 'found';
     vm.lost = 'lost';
     vm.floatButton = document.getElementById('floatButton');
-    vm.checkbox_f = document.getElementById('checkbox_f');
-    vm.checkbox_l = document.getElementById('checkbox_l');
 
+    vm.clearCheck = () => {
+      document.getElementById('checkbox_f').checked = false;
+      document.getElementById('checkbox_l').checked = false;
+    };
     vm.addPost = () => {
+      vm.clearCheck();
       $('#myModal').modal('show');
     };
 
