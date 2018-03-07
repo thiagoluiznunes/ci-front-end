@@ -10,10 +10,6 @@ gulp.task('deps', ['deps.js', 'deps.css', 'deps.fonts']);
 gulp.task('deps.js', () => {
   return gulp.src([
     'node_modules/angular/angular.min.js',
-    'node_modules/angular-animate/angular-animate.min.js',
-    'node_modules/angular-aria/angular-aria.min.js',
-    'node_modules/angular-messages/angular-messages.min.js',
-    'node_modules/angular-material/angular-material.min.js',
     'node_modules/@uirouter/angularjs/release/angular-ui-router.min.js',
     'node_modules/angular-toastr/dist/angular-toastr.tpls.min.js',
     'node_modules/jquery/dist/jquery.min.js',
@@ -25,7 +21,6 @@ gulp.task('deps.js', () => {
 
 gulp.task('deps.css', () => {
   return gulp.src([
-    'node_modules/angular-material/angular-material.min.css',
     'node_modules/angular-toastr/dist/angular-toastr.min.css',
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css'])
