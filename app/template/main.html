@@ -14,7 +14,7 @@
     </a>
     <section class="col-xs-12 col-sm-12 col-lg-12 col-xl-12">
       <ci-post ng-repeat="post in pCtrl.posts" type="{{ post.type }}" description="{{ post.description }}" name="{{ post.name }}"
-        contact="{{ post.contact }}" data="{{ post.data }}">
+        contact="{{ post.contact }}" date="{{ post.date }}">
       </ci-post>
     </section>
     <div ng-include="'template/modal.html'"></div>

@@ -12,9 +12,9 @@
     const vm = this;
 
     vm.posts = {};
-    vm.post = null;
     vm.found = 'found';
     vm.lost = 'lost';
+    vm.post = null;
     vm.floatButton = document.getElementById('floatButton');
 
     vm.addPost = () => {
@@ -22,9 +22,12 @@
       $('#myModal').modal('show');
     };
 
-    vm.confirm = () => {
-      console.log(post);
-      // vm.create();
+    vm.register = () => {
+      console.log(vm.post);
+      vm.create();
+    };
+    vm.cancel = () => {
+      console.log('cancel');
     };
 
     vm.clearCheck = () => {
@@ -35,8 +38,10 @@
     vm.checkbox = (param) => {
       if (param === 'found') {
         document.getElementById('checkbox_l').checked = false;
+        vm.post.type = 'Achado';
       } else {
         document.getElementById('checkbox_f').checked = false;
+        vm.post.type = 'Perdido';
       }
     };
 
@@ -61,7 +66,7 @@
         });
     };
     vm.teste = () => {
-      $http.post(`${consts.oapiUrl}/item`, vm.mok)
+      $http.post(`${consts.oapiUrl}/item`, vm.post)
         .then((response) => {
           vm.refresh();
         })
