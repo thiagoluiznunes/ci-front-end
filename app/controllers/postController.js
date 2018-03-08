@@ -17,17 +17,21 @@
     vm.post = null;
     vm.floatButton = document.getElementById('floatButton');
 
+    vm.formatDate = () => {
+      // let date = vm.post.date.split('-').reverse().join('-');
+    };
+
     vm.addPost = () => {
       vm.clearCheck();
       $('#myModal').modal('show');
     };
 
     vm.register = () => {
-      console.log(vm.post);
       vm.create();
     };
+
     vm.cancel = () => {
-      console.log('cancel');
+      vm.post = null;
     };
 
     vm.clearCheck = () => {
@@ -65,15 +69,7 @@
           msgs.addError(response.data.errors);
         });
     };
-    vm.teste = () => {
-      $http.post(`${consts.oapiUrl}/item`, vm.post)
-        .then((response) => {
-          vm.refresh();
-        })
-        .catch((response) => {
-          msgs.addError(response.data.errors);
-        });
-    };
+
     vm.refresh();
 
     $interval(() => {
