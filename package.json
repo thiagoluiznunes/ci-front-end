@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app",
-    "postinstall": "gulp default",
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint gulpTasks/*.js ./**/*.js",
     "init-lint": "./node_modules/.bin/eslint --init",
     "prepush": "npm run lint",
