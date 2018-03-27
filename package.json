@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "node app",
+    "postinstall": "gulp default",
     "lint": "./node_modules/.bin/eslint gulpTasks/*.js ./**/*.js",
     "init-lint": "./node_modules/.bin/eslint --init",
     "prepush": "npm run lint",
