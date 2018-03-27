@@ -15,7 +15,12 @@
     vm.post = null;
     vm.found = 'found';
     vm.lost = 'lost';
+    vm.post = null;
     vm.floatButton = document.getElementById('floatButton');
+
+    vm.formatDate = () => {
+      // let date = vm.post.date.split('-').reverse().join('-');
+    };
 
     vm.addPost = () => {
       vm.clearCheck();
@@ -27,6 +32,14 @@
       // vm.create();
     };
 
+    vm.register = () => {
+      vm.create();
+    };
+
+    vm.cancel = () => {
+      vm.post = null;
+    };
+
     vm.clearCheck = () => {
       document.getElementById('checkbox_f').checked = false;
       document.getElementById('checkbox_l').checked = false;
@@ -35,8 +48,10 @@
     vm.checkbox = (param) => {
       if (param === 'found') {
         document.getElementById('checkbox_l').checked = false;
+        vm.post.type = 'Achado';
       } else {
         document.getElementById('checkbox_f').checked = false;
+        vm.post.type = 'Perdido';
       }
     };
 
@@ -60,15 +75,7 @@
           msgs.addError(response.data.errors);
         });
     };
-    vm.teste = () => {
-      $http.post(`${consts.oapiUrl}/item`, vm.mok)
-        .then((response) => {
-          vm.refresh();
-        })
-        .catch((response) => {
-          msgs.addError(response.data.errors);
-        });
-    };
+
     vm.refresh();
 
     $interval(() => {

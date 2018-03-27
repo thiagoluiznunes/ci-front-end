@@ -31,17 +31,20 @@
   font-size: 1.8rem;
 }
 .main a {
+  font-size: 1.6rem;
+  color: #b6b6b6;
+}
+.main h4 {
   color: #b6b6b6;
 }
 .main a:hover {
   transition-duration: 200ms;
   color: #00a8e9;
-  /*color: #2196F3;*/
 }
 .main i {
   color: #b6b6b6;
 }
-#h2-data {
+#h2-date {
   margin-top:5%;
   color: #b6b6b6;
 }
