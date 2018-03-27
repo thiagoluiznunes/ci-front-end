@@ -12,14 +12,19 @@
     const vm = this;
 
     vm.posts = {};
+    vm.post = null;
     vm.found = 'found';
     vm.lost = 'lost';
     vm.floatButton = document.getElementById('floatButton');
 
     vm.addPost = () => {
-      vm.create();
       vm.clearCheck();
       $('#myModal').modal('show');
+    };
+
+    vm.confirm = () => {
+      console.log(post);
+      // vm.create();
     };
 
     vm.clearCheck = () => {
@@ -45,15 +50,8 @@
         });
     };
 
-    vm.mok = {
-      type: 'Mok',
-      description: 'Objeto mokado',
-      name: 'Thiago Luiz Nunes',
-      contact: 'facebook.com/thiagoluizsurf',
-      data: '05/02'};
-
     vm.create = () => {
-      methods.post(vm.mok)
+      methods.post(vm.post)
         .then((response) => {
           vm.refresh();
           msgs.addSuccess('Item postado! :D');
