@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start":"node gulpfile.js",
     "heroku-postbuild": "gulp --production",
     "lint": "./node_modules/.bin/eslint gulpTasks/*.js ./**/*.js",
     "init-lint": "./node_modules/.bin/eslint --init",
