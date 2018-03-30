@@ -12,7 +12,6 @@
     const vm = this;
 
     vm.posts = {};
-    vm.post = null;
     vm.found = 'found';
     vm.lost = 'lost';
     vm.post = null;
@@ -28,11 +27,6 @@
     };
 
     vm.confirm = () => {
-      console.log(post);
-      // vm.create();
-    };
-
-    vm.register = () => {
       vm.create();
     };
 
