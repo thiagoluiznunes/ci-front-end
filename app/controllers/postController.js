@@ -12,6 +12,7 @@
     const vm = this;
 
     vm.posts = {};
+    vm.post = null;
     vm.found = 'found';
     vm.lost = 'lost';
     vm.post = null;
@@ -24,6 +25,11 @@
     vm.addPost = () => {
       vm.clearCheck();
       $('#myModal').modal('show');
+    };
+
+    vm.confirm = () => {
+      console.log(post);
+      // vm.create();
     };
 
     vm.register = () => {
