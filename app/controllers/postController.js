@@ -64,9 +64,13 @@
         .then((response) => {
           vm.refresh();
           msgs.addSuccess('Item postado! :D');
+          vm.cancel();
         })
         .catch((response) => {
-          msgs.addError(response.data.errors);
+          let data = response.data.errors;
+          for (let i = 0; i < Object.keys(data).length; i++) {
+            msgs.addError(data[Object.keys(data)[i]].message);
+          }
         });
     };
 
