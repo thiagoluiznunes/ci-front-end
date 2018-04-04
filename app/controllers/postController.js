@@ -28,6 +28,7 @@
 
     vm.confirm = () => {
       vm.create();
+      vm.clearCheck();
     };
 
     vm.cancel = () => {
