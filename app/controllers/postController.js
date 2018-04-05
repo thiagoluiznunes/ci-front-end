@@ -12,14 +12,10 @@
     const vm = this;
 
     vm.posts = {};
-    vm.found = 'found';
-    vm.lost = 'lost';
-    vm.post = null;
+    vm.found = {status: false, name: 'found'};
+    vm.lost = {status: false, name: 'lost'};
+    vm.post = {};
     vm.floatButton = document.getElementById('floatButton');
-
-    vm.formatDate = () => {
-      // let date = vm.post.date.split('-').reverse().join('-');
-    };
 
     vm.addPost = () => {
       vm.clearCheck();
@@ -28,25 +24,37 @@
 
     vm.confirm = () => {
       vm.create();
-      vm.clearCheck();
     };
 
     vm.cancel = () => {
       vm.post = null;
+      vm.clearCheck();
     };
 
     vm.clearCheck = () => {
       document.getElementById('checkbox_f').checked = false;
       document.getElementById('checkbox_l').checked = false;
     };
-
-    vm.checkbox = (param) => {
-      if (param === 'found') {
+    vm.checkboxFound = () => {
+      if (vm.found.status === false) {
         document.getElementById('checkbox_l').checked = false;
+        vm.found.status = true;
+        vm.lost.status = false;
         vm.post.type = 'Achado';
       } else {
-        document.getElementById('checkbox_f').checked = false;
+        vm.found.status = false;
+        vm.post.type = undefined;
+      }
+    };
+    vm.checkboxLost = () => {
+      if (vm.lost.status === false) {
+        document.getElementById('checkbox_l').checked = false;
+        vm.lost.status = true;
+        vm.found.status = false;
         vm.post.type = 'Perdido';
+      } else {
+        vm.lost.status = false;
+        vm.post.type = undefined;
       }
     };
 
