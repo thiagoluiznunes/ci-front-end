@@ -15,7 +15,6 @@
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
     vm.post = {};
-    vm.floatButton = document.getElementById('floatButton');
 
     vm.addPost = () => {
       vm.clearCheck();
@@ -32,29 +31,24 @@
     };
 
     vm.clearCheck = () => {
-      document.getElementById('checkbox_f').checked = false;
-      document.getElementById('checkbox_l').checked = false;
+      vm.found.status = false;
+      vm.lost.status = false;
     };
     vm.checkboxFound = () => {
-      if (vm.found.status === false) {
-        document.getElementById('checkbox_l').checked = false;
-        vm.found.status = true;
+      if (vm.found.status) {
         vm.lost.status = false;
         vm.post.type = 'Achado';
       } else {
-        vm.found.status = false;
         vm.post.type = undefined;
       }
     };
     vm.checkboxLost = () => {
-      if (vm.lost.status === false) {
-        document.getElementById('checkbox_l').checked = false;
-        vm.lost.status = true;
+      if (vm.lost.status) {
         vm.found.status = false;
         vm.post.type = 'Perdido';
       } else {
-        vm.lost.status = false;
         vm.post.type = undefined;
+        console.log(vm.post.type);
       }
     };
 
