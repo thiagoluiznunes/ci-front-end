@@ -3,12 +3,12 @@
 (function() {
   angular
     .module('ci-app')
-    .factory('methods', MethodsFactory);
+    .factory('postfactory', PostFactory);
 
-  MethodsFactory.$inject =
+  PostFactory.$inject =
     ['$http', 'consts'];
 
-  function MethodsFactory($http, consts) {
+  function PostFactory($http, consts) {
     let methods = {};
     const url = `${consts.oapiUrl}/item`;
 

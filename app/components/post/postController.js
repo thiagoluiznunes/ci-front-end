@@ -6,9 +6,9 @@
     .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', '$interval', 'methods', 'consts', 'msgs'];
+    ['$http', '$interval', 'postfactory', 'consts', 'msgs'];
 
-  function PostController($http, $interval, methods, consts, msgs) {
+  function PostController($http, $interval, postfactory, consts, msgs) {
     const vm = this;
 
     vm.posts = {};
@@ -59,7 +59,7 @@
     };
 
     vm.refresh = () => {
-      methods.get()
+      postfactory.get()
         .then((response) => {
           vm.posts = response.data.reverse();
         })
@@ -69,7 +69,7 @@
     };
 
     vm.create = () => {
-      methods.post(vm.post)
+      postfactory.post(vm.post)
         .then((response) => {
           vm.refresh();
           msgs.addSuccess('Item postado! :D');
