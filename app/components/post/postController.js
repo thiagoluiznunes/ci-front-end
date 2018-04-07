@@ -53,28 +53,22 @@
     };
 
     vm.refresh = () => {
-      postfactory.get()
-        .then((response) => {
-          vm.posts = response.data.reverse();
-        })
-        .catch((response) => {
-          msgs.addError(response.data.errors);
-        });
+      postfactory.get((err, response) => {
+        if (response) vm.posts = response;
+        else msgs.addError(err);
+      });
     };
 
     vm.create = () => {
-      postfactory.post(vm.post)
-        .then((response) => {
+      postfactory.post(vm.post, (err, response) => {
+        if (response) {
           vm.refresh();
-          msgs.addSuccess('Item postado! :D');
           vm.cancel();
-        })
-        .catch((response) => {
-          let data = response.data.errors;
-          for (let i = 0; i < Object.keys(data).length; i++) {
-            msgs.addError(data[Object.keys(data)[i]].message);
-          }
-        });
+          msgs.addSuccess('Item postado! :D');
+        } else {
+          msgs.addError(err);
+        }
+      });
     };
 
     vm.refresh();
