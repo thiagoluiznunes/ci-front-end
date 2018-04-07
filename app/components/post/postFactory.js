@@ -12,27 +12,19 @@
     let methods = {};
     const url = `${consts.oapiUrl}/item`;
 
-    // methods.checkboxFound = (...params) => {
-    //   if (params.found.status) {
-    //     params.lost.status = false;
-    //     params.post.type = 'Achado';
-    //     // return params;
-    //   } else {
-    //     params.post.type = undefined;
-    //     // return params;
-    //   }
-    //   params.callback(null, {'lost': params.lost, 'found': params.found});
-    // };
+    methods.checkboxFound = (...params) => {
+      if (params[0].status) {
+        params[1].status = false;
+        params[2].type = 'Achado';
+      } else params[2].type = undefined;
+    };
 
-    // methods.checkboxLost = (...params) => {
-    //   if (params.lost.status) {
-    //     params.found.status = false;
-    //     params.post.type = 'Perdido';
-    //     return {params};
-    //   }
-    //   post.type = undefined;
-    //   return {params};
-    // };
+    methods.checkboxLost = (...params) => {
+      if (params[1].status) {
+        params[0].status = false;
+        params[2].type = 'Perdido';
+      } else params[2].type = undefined;
+    };
 
     methods.get = (callback) => {
       $http.get(url)

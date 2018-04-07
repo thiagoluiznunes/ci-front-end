@@ -33,23 +33,15 @@
     vm.clearCheck = () => {
       vm.found.status = false;
       vm.lost.status = false;
+      vm.post.type = undefined;
     };
+
     vm.checkboxFound = () => {
-      if (vm.found.status) {
-        vm.lost.status = false;
-        vm.post.type = 'Achado';
-      } else {
-        vm.post.type = undefined;
-      }
+      postfactory.checkboxFound(vm.found, vm.lost, vm.post);
     };
+
     vm.checkboxLost = () => {
-      if (vm.lost.status) {
-        vm.found.status = false;
-        vm.post.type = 'Perdido';
-      } else {
-        vm.post.type = undefined;
-        console.log(vm.post.type);
-      }
+      postfactory.checkboxLost(vm.found, vm.lost, vm.post);
     };
 
     vm.refresh = () => {
