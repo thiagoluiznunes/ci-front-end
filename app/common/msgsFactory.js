@@ -12,6 +12,10 @@
       // Captures all message
       if (msgs instanceof Array) {
         msgs.forEach((msg) => toastr[method](msg, title));
+      } else if (msgs instanceof Object) {
+        for (let i = 0; i < Object.keys(msgs).length; i++) {
+            toastr[method](msgs[Object.keys(msgs)[i]].message);
+          }
       } else {
         toastr[method](msgs, title);
       }
