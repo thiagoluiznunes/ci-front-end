@@ -10,7 +10,14 @@
 
   </head>
 
+  <body>
+    <ng-include src="'common/nav/nav.html'"></ng-include>
+
     <ui-view></ui-view>
+    
+    <ng-include src="'common/footer/footer.html'"></ng-include>
+  </body>
+
 
   <script src="/assets/js/deps.min.js"></script>
   <script src="/assets/js/app.min.js"></script>
