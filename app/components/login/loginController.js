@@ -6,11 +6,24 @@
     .controller('LoginCtrl', LoginController);
 
   LoginController.$inject =
-    ['$http', 'loginfactory', 'consts', 'msgs'];
+    ['$http', 'loginFactory', 'consts', 'msgs'];
 
-  function LoginController($http, loginfactory, consts, msgs) {
+  function LoginController($http, loginFactory, consts, msgs) {
     const vm = this;
 
-    vm.showModal = () => loginfactory.modal();
+    vm.login = () => {
+      loginFactory.login(vm.user, (err) => {
+        console.log(vm.user);
+        // err ? msgs.addError(err) : $location.path('/');
+      });
+    };
+
+    vm.signup = () => {
+      auth.signup(vm.user, (err) => {
+        // err ? msgs.addError(err) : $location.path('/');
+        console.log(vm.user);
+      });
+    };
+    vm.showModal = () => loginFactory.modal();
   }
 })();
