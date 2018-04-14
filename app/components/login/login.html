@@ -1,6 +1,7 @@
 <ul ng-controller="LoginCtrl as lCtrl" class="nav navbar-nav navbar-right">
 
-    <li ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    <li ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  <li ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  <li ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  <ng-include src="'../components/login/loginModal.html'"></ng-include>
 
 </ul>
