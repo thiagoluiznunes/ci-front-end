@@ -12,8 +12,12 @@
     let methods = {};
     let user = null;
 
-    methods.modal = () => {
+    methods.showModal = () => {
       $('#loginModal').modal('show');
+    };
+
+    methods.closeModal = () => {
+      $('#loginModal').modal('hide');
     };
 
     methods.getUser = () => {
@@ -24,20 +28,20 @@
     };
 
     methods.login = (user, callback) => {
-      submit('login', user, callback);
+      methods.submit('login', user, callback);
     };
 
     methods.signup = (user, callback) => {
-      submit('signup', user, callback);
+      methods.submit('signup', user, callback);
     };
 
     methods.submit = (url, user, callback) => {
-     $http.post(`${consts.oapi}/${url}`, user)
+     $http.post(`${consts.oapiUrl}/${url}`, user)
         .then((response) => {
-          console.log(response.data);
+          if (callback) callback(null, response.data);
         })
         .catch((response) => {
-          console.log('');
+          if (callback) callback(response.data);
         });
     };
 
