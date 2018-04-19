@@ -65,32 +65,29 @@
 .my-float{
   margin-top:22px;
 }
-.modal-header {
+#myModal .modal-header {
   background-color: #00a8e9;
   /*background-color: #2196F3;*/
   color: #fff;
 }
-.modal-header h5 {
+#myModal .modal-header h5 {
   font-family: Arcon-Regular;
   font-size: 2rem;
 }
-.modal-footer .btn-primary {
+#myModal .modal-footer .btn-primary {
   font-family: SourcerSansPro;
   background-color:#00a8e9;
   /*background-color:#2196F3;*/
   border-color:#00a8e9;
   /*border-color:#2196F3;*/
 }
-.modal-footer .btn-secondary {
+#myModal .modal-footer .btn-secondary {
   font-family: SourcerSansPro;
 }
-.form-group {
-
-}
-.form-group label {
+#myModal .form-group label {
   color: rgba(182,182,182);
 }
-.checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {
+#myModal .checkbox-inline + .checkbox-inline, .radio-inline + .radio-inline {
   margin-left: 0px;
 }
 .logo-ci {

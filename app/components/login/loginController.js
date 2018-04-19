@@ -11,6 +11,7 @@
   function LoginController($http, $location, loginFactory, consts, msgs) {
     const vm = this;
     vm.user = {};
+    
 
     vm.login = () => {
       loginFactory.login(vm.user, (err, response) => {
@@ -22,7 +23,8 @@
 
     vm.signup = () => {
       auth.signup(vm.user, (err, response) => {
-        // err ? msgs.addError(err) : $location.path('/');
+        if (err) return msgs.addError(err.errors);
+        vm.login();
       });
     };
     vm.showModal = () => loginFactory.showModal();
