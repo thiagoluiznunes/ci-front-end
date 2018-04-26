@@ -1,4 +1,4 @@
-# ci-environment-frontend
+# ci-front-end
 
 Toolkit: MongoDB | Express.js| Angular.js | Node.js
 
