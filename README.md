@@ -5,8 +5,13 @@ Toolkit: MongoDB | Express.js| Angular.js | Node.js
 ### Requirements ###
 
 * **[Node.js 6.9.5](http://nodejs.org/en/)** :white_check_mark:
-* **[Express.js 4.15.2](http://expressjs.com/)** :white_check_mark:
-* **[MongoDB 3.4.4](https://www.mongodb.com/)** :white_check_mark:
+* **[AngularJS 1.6.6](https://angularjs.org/)** :white_check_mark:
+* **[Babel 1.6.0](https://babeljs.io/)** :white_check_mark:
+* **[Bootstrap 3.3.7](http://getbootstrap.com/docs/3.3/)** :white_check_mark:
+* **[Eslint 4.18.1](https://eslint.org/)** :white_check_mark:
+* **[Font-awesome 4.7.0](https://fontawesome.com/v4.7.0/)** :white_check_mark:
+* **[Gulp 3.9.1](https://gulpjs.com/)** :white_check_mark:
+* **[Husky](https://github.com/typicode/husky)** :white_check_mark:
 
 ### Installation ###
 
