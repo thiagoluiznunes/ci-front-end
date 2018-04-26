@@ -38,13 +38,11 @@
     };
 
     vm.checkboxFound = () => {
-      // injections[2].checkboxFound(vm.found, vm.lost, vm.post);
-      injections[2].checkbox(vm.found, vm.lost, vm.post, 'Achado');
+      injections[2].checkboxFound(vm.found, vm.lost, vm.post);
     };
 
     vm.checkboxLost = () => {
-      // injections[2].checkboxLost(vm.found, vm.lost, vm.post);
-      injections[2].checkbox(vm.found, vm.lost, vm.post, 'Perdido');
+      injections[2].checkboxLost(vm.found, vm.lost, vm.post);
     };
 
     vm.refresh = () => {
