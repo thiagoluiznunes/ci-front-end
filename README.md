@@ -10,19 +10,18 @@ Toolkit: MongoDB | Express.js| Angular.js | Node.js
 
 ### Installation ###
 
-1. After 'git clone' command, run the following commands to install dependencies:
+1. Cloning repository:
   ```
-  user@user:~/path_to_cloned_folder$ npm install
+  user@user:~/path_to_cloned_folder$ git clone https://github.com/ThiagoLuizNunes/ci-front-end.git
   ```
-  - **Manually install the dependencies that may have not been installed by the above command.** :white_check_mark:
-  
 2. Install the dependencies:
   ```
-  user@user:~/path_to_cloned_folder/front-end$ npm install
+  user@user:~/path_to_cloned_folder/ci-front-end$ npm install
   ```
+  - **Manually install the dependencies that may have not been installed by the above command.** :white_check_mark:
 3. Start application:
 ```
-  use@user:~/path_to_cloned_folder/front-end$ npm run dev
+  use@user:~/path_to_cloned_folder/ci-front-end$ npm run dev
   ```
   ```
   Access the browser http://localhost:3000
