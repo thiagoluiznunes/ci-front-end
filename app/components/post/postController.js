@@ -27,7 +27,7 @@
     };
 
     vm.cancel = () => {
-      vm.post = null;
+      vm.post = {};
       vm.clearCheck();
     };
 
@@ -55,9 +55,9 @@
     vm.create = () => {
       injections[2].post(vm.post, (err, response) => {
         if (response) {
-          vm.refresh();
-          vm.cancel();
           injections[3].addSuccess('Item postado! :D');
+          vm.cancel();
+          vm.refresh();
         } else {
           injections[3].addError(err);
         }
