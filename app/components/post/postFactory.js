@@ -12,19 +12,23 @@
     let methods = {};
     const url = `${consts.oapiUrl}/item`;
 
-    methods.checkboxFound = (...params) => {
-      if (params[0].status) {
-        params[1].status = false;
-        params[2].type = 'Achado';
-      } else params[2].type = undefined;
+    // methods.checkboxFound = (...params) => {
+    methods.checkbox = (...params) => {
+      if (params[3] === 'Achado') {
+        if (params[0].status) {
+          params[1].status = false;
+          params[2].type = 'Achado';
+        } else params[2].type = undefined;
+      } else {
+        if (params[1].status) {
+          params[0].status = false;
+          params[2].type = 'Perdido';
+        } else params[2].type = undefined;
+      }
     };
 
-    methods.checkboxLost = (...params) => {
-      if (params[1].status) {
-        params[0].status = false;
-        params[2].type = 'Perdido';
-      } else params[2].type = undefined;
-    };
+    // methods.checkboxLost = (...params) => {
+    // };
 
     methods.get = (callback) => {
       $http.get(url)

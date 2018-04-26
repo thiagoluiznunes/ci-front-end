@@ -6,9 +6,10 @@
     .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', '$interval', 'postfactory', 'consts', 'msgs'];
+    ['$http', '$interval', 'postfactory', 'msgs'];
 
-  function PostController($http, $interval, postfactory, consts, msgs) {
+  // function PostController($http, $interval, postfactory, msgs) {
+  function PostController(...injections) {
     const vm = this;
 
     vm.posts = {};
@@ -37,35 +38,37 @@
     };
 
     vm.checkboxFound = () => {
-      postfactory.checkboxFound(vm.found, vm.lost, vm.post);
+      // injections[2].checkboxFound(vm.found, vm.lost, vm.post);
+      injections[2].checkbox(vm.found, vm.lost, vm.post, 'Achado');
     };
 
     vm.checkboxLost = () => {
-      postfactory.checkboxLost(vm.found, vm.lost, vm.post);
+      // injections[2].checkboxLost(vm.found, vm.lost, vm.post);
+      injections[2].checkbox(vm.found, vm.lost, vm.post, 'Perdido');
     };
 
     vm.refresh = () => {
-      postfactory.get((err, response) => {
+      injections[2].get((err, response) => {
         if (response) vm.posts = response;
-        else msgs.addError(err);
+        else injections[3].addError(err);
       });
     };
 
     vm.create = () => {
-      postfactory.post(vm.post, (err, response) => {
+      injections[2].post(vm.post, (err, response) => {
         if (response) {
           vm.refresh();
           vm.cancel();
-          msgs.addSuccess('Item postado! :D');
+          injections[3].addSuccess('Item postado! :D');
         } else {
-          msgs.addError(err);
+          injections[3].addError(err);
         }
       });
     };
 
     vm.refresh();
 
-    $interval(() => {
+    injections[1](() => {
       vm.refresh();
     }, 50000);
   }
