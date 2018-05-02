@@ -38,6 +38,7 @@
     methods.submit = (url, user, callback) => {
      $http.post(`${consts.oapiUrl}/${url}`, user)
         .then((response) => {
+          localStorage.setItem(consts.userKey, JSON.stringify(response.data));
           if (callback) callback(null, response.data);
         })
         .catch((response) => {

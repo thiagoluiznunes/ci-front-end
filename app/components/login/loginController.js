@@ -3,12 +3,14 @@
 (function() {
   angular
     .module('ci-app')
-    .controller('LoginCtrl', LoginController);
+    .controller('LoginCtrl', LoginController)
+    .run(LoginRunBlock);
 
   LoginController.$inject =
-    ['$http', '$location', 'loginFactory', 'msgs'];
+    ['$http', '$location', 'loginFactory', 'msgs', 'consts'];
+  LoginRunBlock.$inject =
+    ['loginFactory'];
 
-  // function LoginController($http, $location, loginFactory, msgs) {
   function LoginController(...injections) {
     const vm = this;
     vm.user = {};
@@ -28,5 +30,9 @@
       });
     };
     vm.showModal = () => injections[2].showModal();
+  }
+
+  function LoginRunBlock(...injections) {
+    console.log(injections[0].getUser());
   }
 })();
