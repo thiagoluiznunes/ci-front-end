@@ -8,7 +8,6 @@
   PostController.$inject =
     ['$http', '$interval', 'postfactory', 'msgs'];
 
-  // function PostController($http, $interval, postfactory, msgs) {''
   function PostController(...injections) {
     const vm = this;
 
