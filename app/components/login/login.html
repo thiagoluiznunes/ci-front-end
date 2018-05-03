@@ -1,7 +1,12 @@
 <ul ng-controller="LoginCtrl as lCtrl" class="nav navbar-nav navbar-right">
 
-  <li ng-if="lCtrl.user != null" ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-  <li ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  <li ng-if="!lCtrl.logged" ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  <li ng-if="!lCtrl.logged" ng-click="lCtrl.showModal()"><a href="#"><span  class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+  <li ng-if="lCtrl.logged" ng-click=""><a href="#"><span  class="glyphicon glyphicon-user"></span>
+  {{ lCtrl.getUser.name }}</a></li>
+  <li ng-if="lCtrl.logged" ng-click=""><a href="#"><span  class="glyphicon glyphicon-log-in"></span>
+  {{ lCtrl.getUser.email }}</a></li>
   <ng-include src="'../components/login/loginModal.html'"></ng-include>
-  
+
 </ul>

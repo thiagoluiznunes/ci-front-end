@@ -46,6 +46,35 @@
         });
     };
 
+    methods.logout = (callback) => {
+      user = null;
+      localStorage.removeItem(consts.userKey);
+      $http.defaults.headers.common.Authorization = '';
+      if (callback) callback(null);
+    };
+
+    methods.validateToken = (token, callback) => {
+      if (token) {
+        $http.post(`${consts.oapiUrl}/validateToken`, {token})
+          .then((response) => {
+            if (!reponse.data.valid) {
+              console.log('Error validate reponse, logout is called');
+              methods.logout();
+            } else {
+              console.log(user);
+              $http.defaults.headers.common.Authorization = getUser().token;
+              console.log(user);
+            }
+            if (callback) callback(null, response.data.valid);
+          })
+          .catch((response) => {
+            if (callback) callback(response.data);
+          });
+      } else {
+        if (callback) callback('Invalid token!');
+      }
+    };
+
     return methods;
   }
 })();
