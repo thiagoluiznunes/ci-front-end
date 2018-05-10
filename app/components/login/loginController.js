@@ -18,7 +18,7 @@
 
     vm.login = () => {
       injections[2].login(vm.user, (err, response) => {
-        if (err) return injections[4].addError(err.errors);
+        if (err) return injections[3].addError(err.errors);
         injections[2].closeModal();
         injections[3].addSuccess('Login realizado com sucesso!');
         injections[1].location.reload();
@@ -27,7 +27,7 @@
 
     vm.signup = () => {
       injections[2].signup(vm.user, (err, response) => {
-        if (err) return injections[4].addError(err.errors);
+        if (err) return injections[3].addError(err.errors);
         vm.login();
       });
     };
