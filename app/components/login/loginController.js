@@ -7,14 +7,12 @@
     .run(LoginRunBlock);
 
   LoginController.$inject =
-    ['$http', '$location', 'loginFactory', 'msgs', 'consts'];
+    ['$http', '$location', 'loginFactory', 'msgs', 'consts', '$window'];
   LoginRunBlock.$inject =
     ['$rootScope', '$location', '$window', '$state', 'loginFactory'];
 
   function LoginController(...injections) {
     const vm = this;
-
-    vm.validateUser = injections[2].validateUser;
 
     vm.getUser = () => injections[2].getUser();
 
@@ -23,6 +21,7 @@
         if (err) return injections[4].addError(err.errors);
         injections[2].closeModal();
         injections[3].addSuccess('Login realizado com sucesso!');
+        injections[5].location.reload();
       });
     };
 
@@ -35,21 +34,14 @@
 
     vm.logout = () => {
       injections[2].logout();
+      injections[5].location.reload();
     };
-
 
     vm.showModal = () => injections[2].showModal();
   }
 
   function LoginRunBlock(...injections) {
-    let user = injections[4].getUser();
-
-    // injections[4].validateToken(user.userToken, (err, response) => {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     console.log(response);
-    //   }
-    // });
+    injections[4].validateUser();
+    injections[0].$on('$locationChangeStart', () => injections[4].validateUser());
   }
 })();

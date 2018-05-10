@@ -61,8 +61,7 @@
               console.log('Error validate response, logout is called');
               methods.logout();
             } else {
-              console.log('ok');
-              // $http.defaults.headers.common.Authorization = getUser().token;
+              $http.defaults.headers.common.Authorization = getUser().token;
               if (callback) callback(null, response.data.valid);
             }
           })
@@ -75,10 +74,18 @@
     };
 
     methods.validateUser = () => {
-      methods.validateToken(methods.getUser().userToken, (err, response) => {
-        if (err) return false;
-        return true;
-      });
+      let user = methods.getUser();
+      if (user && !user.isValid) {
+        methods.validateToken(user.token, (err, valid) => {
+          if (err) {
+            console.log('User is not valid');
+          } else {
+            console.log('User is valid');
+            user.isValid = true;
+            $http.defaults.headers.common.Authorization = user.token;
+          }
+        });
+      }
     };
 
     return methods;
