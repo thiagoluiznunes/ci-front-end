@@ -14,29 +14,42 @@
   function LoginController(...injections) {
     const vm = this;
 
-    vm.logged = false;
-    vm.getUser = injections[2].getUser();
+    vm.validateUser = injections[2].validateUser;
+
+    vm.getUser = () => injections[2].getUser();
 
     vm.login = () => {
       injections[2].login(vm.user, (err, response) => {
         if (err) return injections[4].addError(err.errors);
         injections[2].closeModal();
         injections[3].addSuccess('Login realizado com sucesso!');
-        vm.logged = true;
       });
     };
 
     vm.signup = () => {
-      auth.signup(vm.user, (err, response) => {
+      injections[2].signup(vm.user, (err, response) => {
         if (err) return injections[4].addError(err.errors);
         vm.login();
       });
     };
 
+    vm.logout = () => {
+      injections[2].logout();
+    };
+
+
     vm.showModal = () => injections[2].showModal();
   }
 
   function LoginRunBlock(...injections) {
-    console.log(injections[4].getUser());
+    let user = injections[4].getUser();
+
+    // injections[4].validateToken(user.userToken, (err, response) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(response);
+    //   }
+    // });
   }
 })();

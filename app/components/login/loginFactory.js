@@ -57,15 +57,14 @@
       if (token) {
         $http.post(`${consts.oapiUrl}/validateToken`, {token})
           .then((response) => {
-            if (!reponse.data.valid) {
-              console.log('Error validate reponse, logout is called');
+            if (!response.data.valid) {
+              console.log('Error validate response, logout is called');
               methods.logout();
             } else {
-              console.log(user);
-              $http.defaults.headers.common.Authorization = getUser().token;
-              console.log(user);
+              console.log('ok');
+              // $http.defaults.headers.common.Authorization = getUser().token;
+              if (callback) callback(null, response.data.valid);
             }
-            if (callback) callback(null, response.data.valid);
           })
           .catch((response) => {
             if (callback) callback(response.data);
@@ -73,6 +72,13 @@
       } else {
         if (callback) callback('Invalid token!');
       }
+    };
+
+    methods.validateUser = () => {
+      methods.validateToken(methods.getUser().userToken, (err, response) => {
+        if (err) return false;
+        return true;
+      });
     };
 
     return methods;
