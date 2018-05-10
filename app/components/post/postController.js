@@ -6,7 +6,7 @@
     .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', '$interval', 'postfactory', 'msgs'];
+    ['$http', '$interval', 'postfactory', 'msgs', 'loginFactory'];
 
   function PostController(...injections) {
     const vm = this;
@@ -15,6 +15,8 @@
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
     vm.post = {};
+
+    vm.getUser = () => injections[4].getUser();
 
     vm.addPost = () => {
       vm.clearCheck();

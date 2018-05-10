@@ -42,6 +42,8 @@
 
   function LoginRunBlock(...injections) {
     injections[4].validateUser();
-    injections[0].$on('$locationChangeStart', () => injections[4].validateUser());
+    injections[0].$on('$locationChangeStart', () => {
+      injections[4].validateUser();
+    });
   }
 })();
