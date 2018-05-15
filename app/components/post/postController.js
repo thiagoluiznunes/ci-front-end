@@ -5,8 +5,8 @@
     .module('ci-app')
     .controller('PostCtrl', PostController);
 
-  PostController.$inject =
-    ['$http', '$interval', 'postFactory', 'msgs', 'checkFactory'];
+  PostController.$inject = ['$http', '$interval', 'postFactory',
+                            'msgs', 'checkFactory', 'loginFactory'];
 
   function PostController(...injections) {
     const vm = this;
@@ -15,6 +15,8 @@
     vm.post = {};
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
+
+    vm.getUser = () => injections[5].getUser();
 
     vm.confirm = () => vm.create();
 
