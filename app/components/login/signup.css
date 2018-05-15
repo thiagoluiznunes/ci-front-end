@@ -5,62 +5,61 @@
 .nav {
   font-family: VarelaRound-Regular;
 }
-#loginModal .modal-login {
+#signupModal .modal-signup {
   color: #636363;
   width: 350px;
 }
-#loginModal .modal-login .modal-content {
+#signupModal .modal-signup .modal-content {
   padding: 20px;
   border-radius: 5px;
   border: none;
 }
-#loginModal .modal-login .modal-header {
+#signupModal .modal-signup .modal-header {
   border-bottom: none;
   position: relative;
   justify-content: center;
 }
-#loginModal .modal-login h4 {
+#signupModal .modal-signup h4 {
   text-align: center;
   font-size: 26px;
 }
-#loginModal .modal-login  .form-group {
+#signupModal .modal-signup  .form-group {
   position: relative;
 }
-#loginModal .modal-login i {
+#signupModal .modal-signup i {
   position: absolute;
   left: 13px;
   top: 11px;
   font-size: 18px;
 }
-#loginModal .modal-login .form-control {
+#signupModal .modal-signup .form-control {
   padding-left: 40px;
 }
-#loginModal .modal-login .form-control:focus {
+#signupModal .modal-signup .form-control:focus {
   border-color: #00ce81;
 }
-#loginModal .modal-login .form-control, .modal-login .btn {
+#signupModal .modal-signup .form-control, .modal-signup .btn {
   min-height: 40px;
   border-radius: 3px; 
 }
-#loginModal .modal-login .hint-text {
+#signupModal .modal-signup .hint-text {
   text-align: center;
   padding-top: 10px;
 }
-#loginModal .modal-login .close {
+#signupModal .modal-signup .close {
   position: absolute;
   top: -5px;
   right: -5px;
 }
-#loginModal .modal-login .btn {
-  /*background: #00ce81;*/
-  background: #00a8e9;
+#signupModal .modal-signup .btn {
+  background: #00ce81;
   border: none;
   line-height: normal;
 }
-#loginModal .modal-login .btn:hover, .modal-login .btn:focus {
-  background: #039BE5;
+#signupModal .modal-signup .btn:hover, .modal-signup .btn:focus {
+  background: #00bf78;
 }
-#loginModal .modal-login .modal-footer {
+#signupModal .modal-signup .modal-footer {
   background: #ecf0f1;
   border-color: #dee4e7;
   text-align: center;
@@ -69,10 +68,10 @@
   font-size: 13px;
   justify-content: center;
 }
-#loginModal .modal-login .modal-footer a {
+#signupModal .modal-signup .modal-footer a {
   color: #999;
 }
-#loginModal .trigger-btn {
+#signupModal .trigger-btn {
   display: inline-block;
   margin: 100px auto;
 }

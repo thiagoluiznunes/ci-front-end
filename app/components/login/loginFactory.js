@@ -12,12 +12,12 @@
     let methods = {};
     let user = null;
 
-    methods.showModal = () => {
+    methods.showLogin = () => {
       $('#loginModal').modal('show');
     };
 
-    methods.closeModal = () => {
-      $('#loginModal').modal('hide');
+    methods.showSignUp = () => {
+      $('#signupModal').modal('show');
     };
 
     methods.getUser = () => {

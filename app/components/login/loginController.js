@@ -19,14 +19,14 @@
     vm.login = () => {
       injections[2].login(vm.user, (err, response) => {
         if (err) return injections[3].addError(err.errors);
-        injections[2].closeModal();
-        injections[3].addSuccess('Login realizado com sucesso!');
         injections[1].location.reload();
       });
     };
 
     vm.signup = () => {
       injections[2].signup(vm.user, (err, response) => {
+        console.log(err);
+        console.log(vm.getUser());
         if (err) return injections[3].addError(err.errors);
         vm.login();
       });
@@ -37,7 +37,9 @@
       injections[1].location.reload();
     };
 
-    vm.showModal = () => injections[2].showModal();
+    vm.showLogin = () => injections[2].showLogin();
+
+    vm.showSignUp = () => injections[2].showSignUp();
   }
 
   function LoginRunBlock(...injections) {

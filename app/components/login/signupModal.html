@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignUp</title>
+  <link rel="stylesheet" type="text/css" href="app/components/login/signup.css">
+  </head>
+
+  <body>
+  <!-- Modal HTML -->
+  <div id="signupModal" class="modal fade">
+    <div class="modal-dialog modal-signup">
+      <div class="modal-content">
+        <div class="modal-header">        
+          <h4 class="modal-title">SignUp</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <i class="fa fa-user"></i>
+              <input ng-model="lCtrl.user.name" type="text" class="form-control" placeholder="Name" required="required">         
+            </div>
+            <div class="form-group">
+              <i class="fa fa-envelope"></i>
+              <input ng-model="lCtrl.user.email" type="text" class="form-control" placeholder="Email" required="required">
+            </div>
+            <div class="form-group">
+              <i class="fa fa-lock"></i>
+              <input ng-model="lCtrl.user.password" type="password" class="form-control" placeholder="Password" required="required">         
+            </div>
+            <div class="form-group">
+              <i class="fa fa-lock"></i>
+              <input ng-model="lCtrl.user.confirm_password" type="password" class="form-control" placeholder="Confirm Password" required="required">         
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-primary btn-block btn-lg" ng-click="lCtrl.signup()">SignUp</button>
+            </div>
+          </form>       
+        </div>
+        <div class="modal-footer">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>   
+  </body>
+</html>      
