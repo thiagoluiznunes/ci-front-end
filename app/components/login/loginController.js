@@ -25,8 +25,6 @@
 
     vm.signup = () => {
       injections[2].signup(vm.user, (err, response) => {
-        console.log(err);
-        console.log(vm.getUser());
         if (err) return injections[3].addError(err.errors);
         vm.login();
       });
