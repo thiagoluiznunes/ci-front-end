@@ -7,9 +7,9 @@
     .run(LoginRunBlock);
 
   LoginController.$inject =
-    ['$http', '$window', 'loginFactory', 'msgs', 'consts'];
+    ['$http', '$window', 'loginFactory', 'msgs', 'consts', 'modalFactory'];
   LoginRunBlock.$inject =
-    ['$rootScope', '$location', 'loginFactory'];
+    ['$rootScope', '$location', 'validateFactory'];
 
   function LoginController(...injections) {
     const vm = this;
@@ -35,9 +35,9 @@
       injections[1].location.reload();
     };
 
-    vm.showLogin = () => injections[2].showLogin();
+    vm.showLogin = () => injections[5].showLogin();
 
-    vm.showSignUp = () => injections[2].showSignUp();
+    vm.showSignUp = () => injections[5].showSignUp();
   }
 
   function LoginRunBlock(...injections) {
