@@ -17,7 +17,7 @@
           .then((response) => {
             if (!response.data.valid) {
               console.log('Error validate response, logout is called');
-              methods.logout();
+              loginFactory.logout();
             } else {
               $http.defaults.headers.common.Authorization =
                 loginFactory.getUser().token;
