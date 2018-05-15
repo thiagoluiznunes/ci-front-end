@@ -6,25 +6,27 @@
     .controller('PostCtrl', PostController);
 
   PostController.$inject =
-    ['$http', '$interval', 'postfactory', 'msgs', 'loginFactory'];
+    ['$http', '$interval', 'postFactory', 'msgs', 'checkFactory'];
 
   function PostController(...injections) {
     const vm = this;
 
     vm.posts = {};
+    vm.post = {};
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
-    vm.post = {};
 
-    vm.getUser = () => injections[4].getUser();
+    vm.confirm = () => vm.create();
+
+    vm.clearCheck = () => injections[4].clearCheck(vm.found, vm.lost, vm.post);
 
     vm.addPost = () => {
       vm.clearCheck();
       $('#myModal').modal('show');
     };
 
-    vm.confirm = () => {
-      vm.create();
+    vm.checkboxFound = () => {
+      injections[4].checkboxFound(vm.found, vm.lost, vm.post);
     };
 
     vm.cancel = () => {
@@ -32,18 +34,8 @@
       vm.clearCheck();
     };
 
-    vm.clearCheck = () => {
-      vm.found.status = false;
-      vm.lost.status = false;
-      vm.post.type = undefined;
-    };
-
-    vm.checkboxFound = () => {
-      injections[2].checkboxFound(vm.found, vm.lost, vm.post);
-    };
-
     vm.checkboxLost = () => {
-      injections[2].checkboxLost(vm.found, vm.lost, vm.post);
+      injections[4].checkboxLost(vm.found, vm.lost, vm.post);
     };
 
     vm.refresh = () => {
