@@ -10,6 +10,7 @@
       year: '2018',
       site: 'https://github.com/ThiagoLuizNunes',
       // oapiUrl: 'https://ci-back-end.herokuapp.com/oapi',
+      apiUrl: 'http://localhost:4000/api',
       oapiUrl: 'http://localhost:4000/oapi',
       userKey: '_ci-achados-perdidos_'})
     .run(['$rootScope', 'consts', runConsts]);

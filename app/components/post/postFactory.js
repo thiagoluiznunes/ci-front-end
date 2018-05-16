@@ -10,10 +10,9 @@
 
   function PostFactory($http, consts) {
     let methods = {};
-    const url = `${consts.oapiUrl}/item`;
 
     methods.get = (callback) => {
-      $http.get(url)
+      $http.get(`${consts.oapiUrl}/item`)
         .then((response) => {
           if (callback) callback(null, response.data.reverse());
         })
@@ -23,7 +22,7 @@
     };
 
     methods.post = (obj, callback) => {
-      $http.post(url, obj)
+      $http.post(`${consts.apiUrl}/item`, obj)
         .then((response) => {
           if (callback) callback(null, true);
         })
