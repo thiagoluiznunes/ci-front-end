@@ -51,13 +51,12 @@
   top: -5px;
   right: -5px;
 }
-#loginModal .modal-login .btn {
-  /*background: #00ce81;*/
+#loginModal .modal-login .btn-login {
   background: #00a8e9;
   border: none;
   line-height: normal;
 }
-#loginModal .modal-login .btn:hover, .modal-login .btn:focus {
+#loginModal .modal-login .btn-login:hover, .modal-login .btn-login:focus {
   background: #039BE5;
 }
 #loginModal .modal-login .modal-footer {
@@ -75,4 +74,13 @@
 #loginModal .trigger-btn {
   display: inline-block;
   margin: 100px auto;
+}
+
+#loginModal .modal-login .signup-btn {
+  background: #00ce81;
+  border: none;
+  line-height: normal;
+}
+#loginModal .modal-login .signup-btn:hover, .signup-btn:focus  {
+  background: #00bf78;
 }

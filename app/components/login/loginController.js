@@ -13,6 +13,9 @@
 
   function LoginController(...injections) {
     const vm = this;
+    vm.loginMode = undefined;
+    vm.signupMode = undefined;
+    vm.forgotMode = undefined;
 
     vm.getUser = () => injections[2].getUser();
 
@@ -35,9 +38,25 @@
       injections[1].location.reload();
     };
 
-    vm.showLogin = () => injections[5].showLogin();
+    vm.showLogin = () => {
+      vm.loginMode = true;
+      vm.signupMode = false;
+      vm.forgotMode = false;
+      injections[5].showLogin();
+    };
 
-    vm.showSignUp = () => injections[5].showSignUp();
+    vm.showSignUp = () => {
+      vm.loginMode = false;
+      vm.signupMode = true;
+      vm.forgotMode = false;
+      injections[5].showLogin();
+    };
+
+    vm.showForgot = () => {
+      vm.loginMode = false;
+      vm.signupMode = false;
+      vm.forgotMode = true;
+    };
   }
 
   function LoginRunBlock(...injections) {
