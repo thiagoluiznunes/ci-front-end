@@ -18,11 +18,11 @@
             <input ng-model="lCtrl.user.email" type="text" class="form-control" placeholder="Email" required="required">
           </div>
           <div ng-show="lCtrl.signupMode || lCtrl.loginMode" class="input-group">
-            <span class="input-group-addon"><i class="fas fa-lock"></i></span>
+            <span class="input-group-addon"><i class="fas fa-key"></i></span>
             <input ng-model="lCtrl.user.password" type="password" class="form-control" placeholder="Password" required="required">         
           </div>
           <div ng-show="lCtrl.signupMode" class="input-group">
-            <span class="input-group-addon"><i class="fas fa-lock"></i></span>
+            <span class="input-group-addon"><i class="fas fa-key"></i></span>
             <input ng-model="lCtrl.user.confirm_password" type="password" class="form-control" placeholder="Confirm Password" required="required">         
           </div>
           <div id="btn-login" ng-show="lCtrl.loginMode" class="form-group">
@@ -31,8 +31,8 @@
           <div id="btn-signup" ng-show="lCtrl.signupMode" class="form-group">
             <button type="button" class="signup-btn btn-primary btn-block btn-lg" ng-click="lCtrl.signup()">SignUp</button>
           </div>
-          <div id="btn-signup" ng-show="lCtrl.forgotMode" class="form-group">
-            <button type="button" class="btn-forgot btn-primary btn-block btn-lg" ng-click="lCtrl.signup()">Forgot Password</button>
+          <div id="btn-forgot" ng-show="lCtrl.forgotMode" class="form-group">
+            <button type="button" class="forgot-btn btn-primary btn-block btn-lg" ng-click="lCtrl.signup()">Forgot Password</button>
           </div>
         </form>        
       </div>
