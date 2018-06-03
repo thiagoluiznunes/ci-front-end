@@ -1,7 +1,7 @@
 <div id="loginModal" class="modal fade">
   <div class="modal-dialog modal-login">
     <div class="modal-content">
-      <div class="modal-header">        
+      <div class="modal-header">
         <h4 ng-show="lCtrl.loginMode" class="modal-title">Login</h4>
         <h4 ng-show="lCtrl.signupMode" class="modal-title">SignUp</h4>
         <h4 ng-show="lCtrl.forgotMode" class="modal-title">Forgot Password</h4>
@@ -9,20 +9,20 @@
       </div>
       <div class="modal-body">
         <form>
-          <div ng-show="lCtrl.signupMode" class="form-group">
-            <i class="fa fa-user"></i>
-            <input ng-model="lCtrl.user.name" type="text" class="form-control" placeholder="Name" required="required">         
+          <div ng-show="lCtrl.signupMode" class="input-group">
+            <span class="input-group-addon"><i class="fas fa-user"></i></i></span>
+            <input ng-model="lCtrl.user.name" type="text" class="form-control" placeholder="Name" required="required">
           </div>
-          <div class="form-group">
-            <i class="fa fa-envelope"></i>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
             <input ng-model="lCtrl.user.email" type="text" class="form-control" placeholder="Email" required="required">
           </div>
-          <div ng-show="lCtrl.signupMode || lCtrl.loginMode" class="form-group">
-            <i class="fa fa-lock"></i>
+          <div ng-show="lCtrl.signupMode || lCtrl.loginMode" class="input-group">
+            <span class="input-group-addon"><i class="fas fa-lock"></i></span>
             <input ng-model="lCtrl.user.password" type="password" class="form-control" placeholder="Password" required="required">         
           </div>
-          <div ng-show="lCtrl.signupMode" class="form-group">
-            <i class="fa fa-lock"></i>
+          <div ng-show="lCtrl.signupMode" class="input-group">
+            <span class="input-group-addon"><i class="fas fa-lock"></i></span>
             <input ng-model="lCtrl.user.confirm_password" type="password" class="form-control" placeholder="Confirm Password" required="required">         
           </div>
           <div id="btn-login" ng-show="lCtrl.loginMode" class="form-group">

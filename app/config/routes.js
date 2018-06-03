@@ -12,7 +12,7 @@
     $stateProvider
       .state('ci', {
         url: '/',
-        templateUrl: 'components/post/main.html'});
+        templateUrl: 'components/post/post.html'});
       $urlRouterProvider.otherwise('/');
   }
 })();

@@ -22,8 +22,7 @@ gulp.task('deps.js', () => {
 gulp.task('deps.css', () => {
   return gulp.src([
     'node_modules/angular-toastr/dist/angular-toastr.min.css',
-    'node_modules/bootstrap/dist/css/bootstrap.min.css',
-    'node_modules/font-awesome/css/font-awesome.min.css'])
+    'node_modules/bootstrap/dist/css/bootstrap.min.css'])
   .pipe(uglifycss({'uglyComments': true}))
   .pipe(concat('deps.min.css'))
   .pipe(gulp.dest('public/assets/css'));
@@ -31,8 +30,6 @@ gulp.task('deps.css', () => {
 
 gulp.task('deps.fonts', () => {
   return gulp.src([
-    'node_modules/font-awesome/fonts/*.*',
-    'node_modules/bootstrap/dist/fonts/*.*',
-    'node_modules/%40fortawesome'])
+    'node_modules/bootstrap/dist/fonts/*.*'])
   .pipe(gulp.dest('public/assets/fonts'));
 });

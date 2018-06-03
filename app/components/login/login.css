@@ -23,17 +23,20 @@
   text-align: center;
   font-size: 26px;
 }
+#loginModal .input-group {
+  margin-bottom: 10%;
+}
+#loginModal .input-group-addon {
+  background-color: #F5F5F5;
+}
 #loginModal .modal-login  .form-group {
   position: relative;
 }
 #loginModal .modal-login i {
-  position: absolute;
-  left: 13px;
-  top: 11px;
   font-size: 18px;
 }
 #loginModal .modal-login .form-control {
-  padding-left: 40px;
+  padding-left: 10px;
 }
 #loginModal .modal-login .form-control:focus {
   border-color: #00ce81;
@@ -84,3 +87,4 @@
 #loginModal .modal-login .signup-btn:hover, .signup-btn:focus  {
   background: #00bf78;
 }
+
