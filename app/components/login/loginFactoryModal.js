@@ -12,10 +12,6 @@
       $('#loginModal').modal('show');
     };
 
-    methods.showSignUp = () => {
-      $('#signupModal').modal('show');
-    };
-
     return methods;
   }
 })();

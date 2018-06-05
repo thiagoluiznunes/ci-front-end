@@ -13,6 +13,7 @@
 
   function LoginController(...injections) {
     const vm = this;
+
     vm.loginMode = undefined;
     vm.signupMode = undefined;
     vm.forgotMode = undefined;
@@ -36,6 +37,10 @@
     vm.logout = () => {
       injections[2].logout();
       injections[1].location.reload();
+    };
+
+    vm.forgot = () => {
+
     };
 
     vm.showLogin = () => {
