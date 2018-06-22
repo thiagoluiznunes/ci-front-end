@@ -51,7 +51,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" ng-click="pCtrl.confirm()" >Confirmar</button>
+        <button ng-disabled="pCtrl.checkConfirm" type="button" class="btn btn-primary" ng-click="pCtrl.confirm()" >Confirmar</button>
       </div>
     </div>
   </div>
