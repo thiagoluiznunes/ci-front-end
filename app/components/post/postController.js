@@ -15,10 +15,14 @@
     vm.post = {};
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
+    vm.checkConfirm = false;
 
     vm.getUser = () => injections[4].getUser();
 
-    vm.confirm = () => vm.create();
+    vm.confirm = () => {
+      vm.checkConfirm = true;
+      vm.create();
+    };
 
     vm.clearCheck = () => injections[3].clearCheck(vm.found, vm.lost, vm.post);
 
@@ -56,6 +60,7 @@
         } else {
           injections[2].addError(err);
         }
+        vm.checkConfirm = false;
       });
     };
 
