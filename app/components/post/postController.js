@@ -10,64 +10,84 @@
 
   function PostController(...injections) {
     const vm = this;
-
-    vm.posts = {};
-    vm.post = {};
-    vm.found = {status: false, name: 'found'};
-    vm.lost = {status: false, name: 'lost'};
-    vm.checkConfirm = false;
+    initVariables(vm);
 
     vm.getUser = () => injections[4].getUser();
 
-    vm.confirm = () => {
-      vm.checkConfirm = true;
-      vm.create();
-    };
+    vm.cancel = () => cancel(vm);
+
+    vm.confirm = () => confirm(vm);
+
+    vm.addPost = () => addPost(vm);
 
     vm.clearCheck = () => injections[3].clearCheck(vm.found, vm.lost, vm.post);
 
-    vm.addPost = () => {
-      vm.clearCheck();
-      console.log('modal');
-      $('#postModal').modal('show');
-    };
+    vm.checkboxLost = () => checkboxLost(vm, injections[3]);
 
-    vm.checkboxFound = () => {
-      injections[3].checkboxFound(vm.found, vm.lost, vm.post);
-    };
+    vm.checkboxFound = () => checkboxFound(vm, injections[3]);
 
-    vm.cancel = () => {
-      vm.post = {};
-      vm.clearCheck();
-    };
+    vm.refresh = () => refresh(vm, injections[1], injections[2]);
 
-    vm.checkboxLost = () => {
-      injections[3].checkboxLost(vm.found, vm.lost, vm.post);
-    };
-
-    vm.refresh = () => {
-      injections[1].get((err, response) => {
-        if (response) vm.posts = response;
-        else injections[2].addError(err);
-      });
-    };
-
-    vm.create = () => {
-      injections[1].post(vm.post, (err, response) => {
-        if (response) {
-          injections[2].addSuccess('Item postado! :D');
-          vm.cancel();
-          vm.refresh();
-        } else {
-          injections[2].addError(err);
-        }
-        vm.checkConfirm = false;
-      });
-    };
+    vm.create = () => create(vm, injections[1], injections[2]);
 
     vm.refresh();
 
-    injections[0](() => {
+    timeOut(vm, injections[0]);
+  }
+
+  function initVariables(vm) {
+    vm.posts = null;
+    vm.post = null;
+    vm.found = {status: false, name: 'found'};
+    vm.lost = {status: false, name: 'lost'};
+    vm.checkConfirm = false;
+  }
+
+  function create(vm, postFactory, msgs) {
+    postFactory.post(vm.post, (err, response) => {
+      if (response) {
+        msgs.addSuccess('Item postado! :D');
+        vm.cancel();
+        vm.refresh();
+      } else {
+        msgs.addError(err);
+      }
+      vm.checkConfirm = false;
+    });
+  }
+
+  function refresh(vm, postFactory, msgs) {
+    postFactory.get((err, response) => {
+      if (response) vm.posts = response;
+      else msgs.addError(err);
+    });
+  }
+
+  function checkboxLost(vm, checkFactory) {
+    checkFactory.checkboxLost(vm.found, vm.lost, vm.post);
+  }
+
+  function checkboxFound(vm, checkFactory) {
+    checkFactory.checkboxFound(vm.found, vm.lost, vm.post);
+  }
+
+  function cancel(vm) {
+    vm.post = {};
+    vm.clearCheck();
+  }
+
+  function addPost(vm) {
+    vm.clearCheck();
+    $('#postModal').modal('show');
+  }
+
+  function confirm(vm) {
+    vm.checkConfirm = true;
+    vm.create();
+  }
+
+  function timeOut(vm, interval) {
+    interval(() => {
       vm.refresh();
     }, 50000);
   }

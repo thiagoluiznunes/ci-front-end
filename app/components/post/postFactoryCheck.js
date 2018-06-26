@@ -11,7 +11,7 @@
     methods.clearCheck = (...param) => {
       param[0].status = false;
       param[1].status = false;
-      param[2].type = undefined;
+      param[2] = null;
     };
 
     methods.checkboxFound = (...params) => {
