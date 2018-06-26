@@ -22,6 +22,7 @@
     };
 
     methods.post = (obj, callback) => {
+      console.log(obj);
       $http.post(`${consts.apiUrl}/item`, obj)
         .then((response) => {
           if (callback) callback(null, true);
