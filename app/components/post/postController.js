@@ -10,24 +10,17 @@
 
   function PostController(...injections) {
     const vm = this;
-
     initVariables(vm);
 
     vm.getUser = () => injections[4].getUser();
 
-    vm.confirm = () => {
-      vm.checkConfirm = true;
-      vm.create();
-    };
+    vm.cancel = () => cancel(vm);
+
+    vm.confirm = () => confirm(vm);
+
+    vm.addPost = () => addPost(vm);
 
     vm.clearCheck = () => injections[3].clearCheck(vm.found, vm.lost, vm.post);
-
-    vm.addPost = () => {
-      vm.clearCheck();
-      $('#postModal').modal('show');
-    };
-
-    vm.cancel = () => cancel(vm);
 
     vm.checkboxLost = () => checkboxLost(vm, injections[3]);
 
@@ -39,9 +32,7 @@
 
     vm.refresh();
 
-    injections[0](() => {
-      vm.refresh();
-    }, 50000);
+    timeOut(vm, injections[0]);
   }
 
   function initVariables(vm) {
@@ -83,5 +74,21 @@
   function cancel(vm) {
     vm.post = {};
     vm.clearCheck();
+  }
+
+  function addPost(vm) {
+    vm.clearCheck();
+    $('#postModal').modal('show');
+  }
+
+  function confirm(vm) {
+    vm.checkConfirm = true;
+    vm.create();
+  }
+
+  function timeOut(vm, interval) {
+    interval(() => {
+      vm.refresh();
+    }, 50000);
   }
 })();
