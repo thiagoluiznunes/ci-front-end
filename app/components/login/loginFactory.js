@@ -24,14 +24,11 @@
       vm.methods.submit('signup', user, callback);
     };
 
-    vm.methods.submit = (url, user, callback) => submit($http, consts, url, user, callback);
-
-    vm.methods.logout = (callback) => {
-      vm.user = null;
-      localStorage.removeItem(consts.userKey);
-      $http.defaults.headers.common.Authorization = '';
-      if (callback) callback(null);
+    vm.methods.submit = (url, user, callback) => {
+      submit($http, consts, url, user, callback);
     };
+
+    vm.methods.logout = (callback) => logout($http, consts, vm, callback);
 
     return vm.methods;
   }
@@ -43,7 +40,6 @@
     return vm.user;
   }
 
-
   function submit(http, consts, url, user, callback) {
     http.post(`${consts.oapiUrl}/${url}`, user)
       .then((response) => {
@@ -53,5 +49,12 @@
       .catch((response) => {
         if (callback) callback(response.data);
       });
+  }
+
+  function logout(http, consts, vm, callback) {
+    vm.user = null;
+    localStorage.removeItem(consts.userKey);
+    http.defaults.headers.common.Authorization = '';
+    if (callback) callback(null);
   }
 })();
