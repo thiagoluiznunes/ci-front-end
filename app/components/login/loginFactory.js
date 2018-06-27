@@ -25,7 +25,7 @@
     };
 
     vm.methods.submit = (url, user, callback) => {
-      submit($http, consts, url, user, callback);
+      submit(url, user, callback, $http, consts);
     };
 
     vm.methods.logout = (callback) => logout($http, consts, vm, callback);
@@ -40,10 +40,10 @@
     return vm.user;
   }
 
-  function submit(http, consts, url, user, callback) {
-    http.post(`${consts.oapiUrl}/${url}`, user)
+  function submit(url, user, callback, ...params) {
+    params[0].post(`${params[1].oapiUrl}/${url}`, user)
       .then((response) => {
-        localStorage.setItem(consts.userKey, JSON.stringify(response.data));
+        localStorage.setItem(params[1].userKey, JSON.stringify(response.data));
         if (callback) callback(null, response.data);
       })
       .catch((response) => {
