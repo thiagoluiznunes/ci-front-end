@@ -33,13 +33,6 @@
     vm.showForgot = () => showForgot(vm);
   }
 
-  function LoginRunBlock(...injections) {
-    injections[2].validateUser();
-    injections[0].$on('$locationChangeStart', () => {
-      injections[2].validateUser();
-    });
-  }
-
   function initiVariables(vm) {
     vm.loginMode = undefined;
     vm.signupMode = undefined;
@@ -83,5 +76,12 @@
     vm.loginMode = false;
     vm.signupMode = false;
     vm.forgotMode = true;
+  }
+
+  function LoginRunBlock(...injections) {
+    injections[2].validateUser();
+    injections[0].$on('$locationChangeStart', () => {
+      injections[2].validateUser();
+    });
   }
 })();
