@@ -9,42 +9,52 @@
     ['$http', 'consts'];
 
   function LoginFactory($http, consts) {
-    let methods = {};
-    let user = null;
+    const vm = this;
 
-    methods.getUser = () => {
-      if (!user) {
-        user = JSON.parse(localStorage.getItem(consts.userKey));
-      }
-      return user;
+    vm.methods = {};
+    vm.user = null;
+
+    vm.methods.getUser = () => getUser(vm, consts);
+
+    vm.methods.login = (user, callback) => {
+      vm.methods.submit('login', user, callback);
     };
 
-    methods.login = (user, callback) => {
-      methods.submit('login', user, callback);
+    vm.methods.signup = (user, callback) => {
+      vm.methods.submit('signup', user, callback);
     };
 
-    methods.signup = (user, callback) => {
-      methods.submit('signup', user, callback);
+    vm.methods.submit = (url, user, callback) => {
+      submit($http, consts, url, user, callback);
     };
 
-    methods.submit = (url, user, callback) => {
-     $http.post(`${consts.oapiUrl}/${url}`, user)
-        .then((response) => {
-          localStorage.setItem(consts.userKey, JSON.stringify(response.data));
-          if (callback) callback(null, response.data);
-        })
-        .catch((response) => {
-          if (callback) callback(response.data);
-        });
-    };
+    vm.methods.logout = (callback) => logout($http, consts, vm, callback);
 
-    methods.logout = (callback) => {
-      user = null;
-      localStorage.removeItem(consts.userKey);
-      $http.defaults.headers.common.Authorization = '';
-      if (callback) callback(null);
-    };
+    return vm.methods;
+  }
 
-    return methods;
+  function getUser(vm, consts) {
+    if (!vm.user) {
+      vm.user = JSON.parse(localStorage.getItem(consts.userKey));
+    }
+    return vm.user;
+  }
+
+  function submit(http, consts, url, user, callback) {
+    http.post(`${consts.oapiUrl}/${url}`, user)
+      .then((response) => {
+        localStorage.setItem(consts.userKey, JSON.stringify(response.data));
+        if (callback) callback(null, response.data);
+      })
+      .catch((response) => {
+        if (callback) callback(response.data);
+      });
+  }
+
+  function logout(http, consts, vm, callback) {
+    vm.user = null;
+    localStorage.removeItem(consts.userKey);
+    http.defaults.headers.common.Authorization = '';
+    if (callback) callback(null);
   }
 })();
