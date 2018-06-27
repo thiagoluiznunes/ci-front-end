@@ -14,54 +14,23 @@
   function LoginController(...injections) {
     const vm = this;
 
-    vm.loginMode = undefined;
-    vm.signupMode = undefined;
-    vm.forgotMode = undefined;
+    initiVariables(vm);
 
     vm.getUser = () => injections[2].getUser();
 
-    vm.login = () => {
-      injections[2].login(vm.user, (err, response) => {
-        if (err) return injections[3].addError(err.errors);
-        injections[1].location.reload();
-      });
-    };
+    vm.login = () => login(vm, injections[1], injections[2], injections[3]);
 
-    vm.signup = () => {
-      injections[2].signup(vm.user, (err, response) => {
-        if (err) return injections[3].addError(err.errors);
-        vm.login();
-      });
-    };
+    vm.signup = () => signup(vm, injections[2], injections[3]);
 
-    vm.logout = () => {
-      injections[2].logout();
-      injections[1].location.reload();
-    };
+    vm.logout = () => logout(injections[1], injections[2]);
 
-    vm.forgot = () => {
+    vm.forgot = () => {};
 
-    };
+    vm.showLogin = () => showLogin(vm, injections[5]);
 
-    vm.showLogin = () => {
-      vm.loginMode = true;
-      vm.signupMode = false;
-      vm.forgotMode = false;
-      injections[5].showLogin();
-    };
+    vm.showSignUp = () => showSignup(vm, injections[5]);
 
-    vm.showSignUp = () => {
-      vm.loginMode = false;
-      vm.signupMode = true;
-      vm.forgotMode = false;
-      injections[5].showLogin();
-    };
-
-    vm.showForgot = () => {
-      vm.loginMode = false;
-      vm.signupMode = false;
-      vm.forgotMode = true;
-    };
+    vm.showForgot = () => showForgot(vm);
   }
 
   function LoginRunBlock(...injections) {
@@ -69,5 +38,50 @@
     injections[0].$on('$locationChangeStart', () => {
       injections[2].validateUser();
     });
+  }
+
+  function initiVariables(vm) {
+    vm.loginMode = undefined;
+    vm.signupMode = undefined;
+    vm.forgotMode = undefined;
+  }
+
+  function login(vm, windowInjection, loginFactory, msgs) {
+    loginFactory.login(vm.user, (err, response) => {
+        if (err) return msgs.addError(err.errors);
+        windowInjection.location.reload();
+      });
+  }
+
+  function signup(vm, loginFactory, msgs) {
+    loginFactory.signup(vm.user, (err, response) => {
+      if (err) return msgs.addError(err.errors);
+      vm.login();
+    });
+  }
+
+  function logout(windowInjection, loginFactory) {
+    loginFactory.logout();
+    windowInjection.location.reload();
+  }
+
+  function showLogin(vm, modalFactory) {
+    vm.loginMode = true;
+    vm.signupMode = false;
+    vm.forgotMode = false;
+    modalFactory.showLogin();
+  }
+
+  function showSignup(vm, modalFactory) {
+    vm.loginMode = false;
+    vm.signupMode = true;
+    vm.forgotMode = false;
+    modalFactory.showLogin();
+  }
+
+  function showForgot(vm) {
+    vm.loginMode = false;
+    vm.signupMode = false;
+    vm.forgotMode = true;
   }
 })();
