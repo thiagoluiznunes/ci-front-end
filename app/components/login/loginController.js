@@ -14,54 +14,68 @@
   function LoginController(...injections) {
     const vm = this;
 
-    vm.loginMode = undefined;
-    vm.signupMode = undefined;
-    vm.forgotMode = undefined;
+    initiVariables(vm);
 
     vm.getUser = () => injections[2].getUser();
 
-    vm.login = () => {
-      injections[2].login(vm.user, (err, response) => {
-        if (err) return injections[3].addError(err.errors);
-        injections[1].location.reload();
+    vm.login = () => login(vm, injections[1], injections[2], injections[3]);
+
+    vm.signup = () => signup(vm, injections[2], injections[3]);
+
+    vm.logout = () => logout(injections[1], injections[2]);
+
+    vm.forgot = () => {};
+
+    vm.showLogin = () => showLogin(vm, injections[5]);
+
+    vm.showSignUp = () => showSignup(vm, injections[5]);
+
+    vm.showForgot = () => showForgot(vm);
+  }
+
+  function initiVariables(vm) {
+    vm.loginMode = undefined;
+    vm.signupMode = undefined;
+    vm.forgotMode = undefined;
+  }
+
+  function login(vm, windowInjection, loginFactory, msgs) {
+    loginFactory.login(vm.user, (err, response) => {
+        if (err) return msgs.addError(err.errors);
+        windowInjection.location.reload();
       });
-    };
+  }
 
-    vm.signup = () => {
-      injections[2].signup(vm.user, (err, response) => {
-        if (err) return injections[3].addError(err.errors);
-        vm.login();
-      });
-    };
+  function signup(vm, loginFactory, msgs) {
+    loginFactory.signup(vm.user, (err, response) => {
+      if (err) return msgs.addError(err.errors);
+      vm.login();
+    });
+  }
 
-    vm.logout = () => {
-      injections[2].logout();
-      injections[1].location.reload();
-    };
+  function logout(windowInjection, loginFactory) {
+    loginFactory.logout();
+    windowInjection.location.reload();
+  }
 
-    vm.forgot = () => {
+  function showLogin(vm, modalFactory) {
+    vm.loginMode = true;
+    vm.signupMode = false;
+    vm.forgotMode = false;
+    modalFactory.showLogin();
+  }
 
-    };
+  function showSignup(vm, modalFactory) {
+    vm.loginMode = false;
+    vm.signupMode = true;
+    vm.forgotMode = false;
+    modalFactory.showLogin();
+  }
 
-    vm.showLogin = () => {
-      vm.loginMode = true;
-      vm.signupMode = false;
-      vm.forgotMode = false;
-      injections[5].showLogin();
-    };
-
-    vm.showSignUp = () => {
-      vm.loginMode = false;
-      vm.signupMode = true;
-      vm.forgotMode = false;
-      injections[5].showLogin();
-    };
-
-    vm.showForgot = () => {
-      vm.loginMode = false;
-      vm.signupMode = false;
-      vm.forgotMode = true;
-    };
+  function showForgot(vm) {
+    vm.loginMode = false;
+    vm.signupMode = false;
+    vm.forgotMode = true;
   }
 
   function LoginRunBlock(...injections) {
