@@ -22,9 +22,9 @@
 
     vm.clearCheck = () => injections[3].clearCheck(vm.found, vm.lost, vm.post);
 
-    vm.checkboxLost = () => checkboxLost(vm, injections[3]);
+    vm.checkBoxLost = () => checkBoxLost(vm, injections[3]);
 
-    vm.checkboxFound = () => checkboxFound(vm, injections[3]);
+    vm.checkBoxFound = () => checkBoxFound(vm, injections[3]);
 
     vm.refresh = () => refresh(vm, injections[1], injections[2]);
 
@@ -36,8 +36,8 @@
   }
 
   function initVariables(vm) {
-    vm.posts = null;
-    vm.post = null;
+    vm.posts = {};
+    vm.post = {};
     vm.found = {status: false, name: 'found'};
     vm.lost = {status: false, name: 'lost'};
     vm.checkConfirm = false;
@@ -64,11 +64,11 @@
   }
 
   function checkBoxLost(vm, checkFactory) {
-    checkFactory.checkBoxLost(vm.found, vm.lost, vm.post);
+    checkFactory.checkBox(vm, 'lost', 'found');
   }
 
   function checkBoxFound(vm, checkFactory) {
-    checkFactory.checkBoxFound(vm.found, vm.lost, vm.post);
+    checkFactory.checkBox(vm, 'found', 'lost');
   }
 
   function cancel(vm) {
