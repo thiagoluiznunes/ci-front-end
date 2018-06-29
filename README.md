@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ThiagoLuizNunes/ci-front-end.svg?branch=master)](https://travis-ci.org/ThiagoLuizNunes/ci-front-end)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2dc78e4d5d120bf27420/maintainability)](https://codeclimate.com/github/ThiagoLuizNunes/ci-front-end/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2dc78e4d5d120bf27420/test_coverage)](https://codeclimate.com/github/ThiagoLuizNunes/ci-front-end/test_coverage)
+[![Issue Count](https://codeclimate.com/github/ThiagoLuizNunes/ci-lost-and-found/badges/issue_count.svg)](https://codeclimate.com/github/ThiagoLuizNunes/ci-front-end)
 
 Toolkit: Angular.js | Node.js
 
