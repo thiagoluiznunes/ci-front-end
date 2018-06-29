@@ -14,18 +14,13 @@
       param[2] = null;
     };
 
-    methods.checkboxFound = (...params) => {
-      if (params[0].status) {
-        params[1].status = false;
-        params[2].type = 'Achado';
-      } else params[2].type = undefined;
-    };
-
-    methods.checkboxLost = (...params) => {
-      if (params[1].status) {
-        params[0].status = false;
-        params[2].type = 'Perdido';
-      } else params[2].type = undefined;
+    methods.checkBox = (vm, option, option2) => {
+      if (vm[option].status) {
+        vm[option2].status = false;
+        vm.post.type = option === 'found' ? 'Achado' : 'Perdido';
+      } else {
+        vm.post.type = 'undefined';
+      }
     };
 
     return methods;
