@@ -30,7 +30,7 @@
 
     vm.showSignUp = () => showSignup(vm, injections[5]);
 
-    vm.showForgot = () => showForgot(vm);
+    vm.showForgot = () => showForgot(vm, injections[5]);
   }
 
   function initiVariables(vm) {
@@ -59,23 +59,17 @@
   }
 
   function showLogin(vm, modalFactory) {
-    vm.loginMode = true;
-    vm.signupMode = false;
-    vm.forgotMode = false;
-    modalFactory.showLogin();
+    modalFactory.setOptions(vm, 'login');
+    modalFactory.showModal();
   }
 
   function showSignup(vm, modalFactory) {
-    vm.loginMode = false;
-    vm.signupMode = true;
-    vm.forgotMode = false;
-    modalFactory.showLogin();
+    modalFactory.setOptions(vm, 'signup');
+    modalFactory.showModal();
   }
 
-  function showForgot(vm) {
-    vm.loginMode = false;
-    vm.signupMode = false;
-    vm.forgotMode = true;
+  function showForgot(vm, modalFactory) {
+    modalFactory.setOptions(vm);
   }
 
   function LoginRunBlock(...injections) {
