@@ -14,18 +14,22 @@
       param[2] = null;
     };
 
-    methods.checkboxFound = (...params) => {
+    methods.checkBoxFound = (...params) => {
       if (params[0].status) {
         params[1].status = false;
         params[2].type = 'Achado';
       } else params[2].type = undefined;
     };
 
-    methods.checkboxLost = (...params) => {
+    methods.checkBoxLost = (...params) => {
       if (params[1].status) {
         params[0].status = false;
         params[2].type = 'Perdido';
       } else params[2].type = undefined;
+    };
+
+    methods.checkBox = () => {
+
     };
 
     return methods;

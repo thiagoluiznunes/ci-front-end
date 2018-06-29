@@ -63,12 +63,12 @@
     });
   }
 
-  function checkboxLost(vm, checkFactory) {
-    checkFactory.checkboxLost(vm.found, vm.lost, vm.post);
+  function checkBoxLost(vm, checkFactory) {
+    checkFactory.checkBoxLost(vm.found, vm.lost, vm.post);
   }
 
-  function checkboxFound(vm, checkFactory) {
-    checkFactory.checkboxFound(vm.found, vm.lost, vm.post);
+  function checkBoxFound(vm, checkFactory) {
+    checkFactory.checkBoxFound(vm.found, vm.lost, vm.post);
   }
 
   function cancel(vm) {
