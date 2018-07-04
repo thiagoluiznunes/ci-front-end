@@ -58,8 +58,17 @@
 
   function refresh(vm, postFactory, msgs) {
     postFactory.get((err, response) => {
-      if (response) vm.posts = response;
-      else msgs.addError(err);
+      if (response) {
+        vm.posts = response;
+      } else msgs.addError(err);
+    });
+  }
+
+  function count(vm) {
+    postFactory.count((err, response) => {
+      if (response) {
+        vm.pages = Math.ceil(response.value / 10);
+      } else msgs.addError(err);
     });
   }
 

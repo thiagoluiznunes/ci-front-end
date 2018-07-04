@@ -32,6 +32,12 @@
         });
     };
 
+    methods.count = () => {
+      $http.get(`${consts.oapiUrl}/count`)
+        .then((response) => response)
+        .catch((response) => response.data.errors);
+    };
+
     return methods;
   }
 })();
