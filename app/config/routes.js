@@ -11,8 +11,8 @@
   function configure($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('ci', {
-        url: '/',
+        url: '/posts?page',
         templateUrl: 'components/post/post.html'});
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/posts');
   }
 })();

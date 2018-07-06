@@ -6,14 +6,17 @@
     .factory('postFactory', PostFactory);
 
   PostFactory.$inject =
-    ['$http', 'consts'];
+    ['$http', 'consts', '$location'];
 
-  function PostFactory($http, consts) {
+  function PostFactory($http, consts, $location) {
     let methods = {};
 
     methods.get = (callback) => {
-      $http.get(`${consts.oapiUrl}/item`)
+      const page = parseInt($location.search().page) || 1;
+
+      $http.get(`${consts.oapiUrl}/item/${(page - 1) * 10}/10`)
         .then((response) => {
+          console.log(response);
           if (callback) callback(null, response.data.reverse());
         })
         .catch((response) => {
